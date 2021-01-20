@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Verbosity and settings that you pretty much just always are going to want
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+
+# Colorize commands when possible
+alias ls="ls -hN --color=auto --group-directories-first"
+alias ll="ls -l"
+alias lla="ll -a"
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+
+#
+alias config="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+#
+function ytaudio() {
+    dir=${2:-Unknow}
+    dir="'~/Music/$dir/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'"
+    eval youtube-dl -x --add-metadata -o $dir "$1"
+}

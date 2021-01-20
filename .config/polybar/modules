@@ -1,0 +1,97 @@
+[module/powermenu]
+type = custom/text
+content = 襤
+content-padding = 2
+content-font = 2
+content-background = ${color.background}
+content-foreground = ${color.foreground}
+click-left = powermenu
+
+[module/menu]
+type = custom/text
+content = 
+content-padding = 2
+content-font = 2
+content-background = ${color.background}
+content-foreground = ${color.foreground}
+click-left = appsmenu
+
+[module/alsa]
+type = internal/alsa
+; Interval for volume increase/decrease (in percent points)
+interval = 5
+; Available tags: <label-volume> (default) <ramp-volume> <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+; Available tags: <label-muted> (default) <ramp-volume> <bar-volume>
+format-muted-prefix = 婢
+; Available tokens: %percentage% (default)
+label-volume = %percentage%%
+; Available tokens: %percentage% (default)
+label-muted = " Muted"
+label-muted-foreground = ${color.foreground-alt}
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 奄
+ramp-volume-1 = 奄
+ramp-volume-2 = 奔
+ramp-volume-3 = 奔
+ramp-volume-4 = 墳
+ramp-volume-5 = 墳
+ramp-volume-6 = 墳
+
+[module/date]
+type = internal/date
+timezone = Europe/Paris
+; Seconds to sleep between updates
+interval = 30
+; Optional time format
+time = " %H:%M"
+time-alt = " %a, %d %b %Y"
+; Available tokens: %date% (Default) %time%
+label = %time%
+
+[module/mpd]
+type = internal/mpd
+; Host where mpd is running (either ip or domain name)
+; Can also be the full path to a unix socket where mpd is running.
+host = 127.0.0.1
+port = 6600
+;;password = mysecretpassword
+
+; Seconds to sleep between progressbar/song timer sync
+interval = 1
+format-online = <label-song> <icon-prev> <toggle> <icon-next> 
+format-online-prefix = 
+format-offline = <label-offline>
+format-offline-prefix = 
+label-song =  " %artist% - %title%"
+label-song-maxlen = 50
+label-song-ellipsis = true
+label-offline = " Offline"
+; Only applies if <icon-X> is used
+icon-play = 奈
+icon-pause = 
+icon-stop = ﭦ
+icon-next = ﭡ
+icon-prev = ﭣ
+
+[module/network]
+type = internal/network
+interface = wlp1s0
+format-connected = <ramp-signal>
+ramp-signal-0 = 直 
+format-disconnected = 睊
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+label-focused = 
+label-focused-foreground = #8fbcbb
+label-focused-padding = 1
+label-occupied = 
+label-occupied-foreground = ${color.foreground-alt}
+label-occupied-padding = 1
+label-empty = 
+label-empty-foreground = ${color.foreground} 
+label-empty-padding = 1

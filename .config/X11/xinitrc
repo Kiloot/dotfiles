@@ -1,0 +1,11 @@
+#!/bin/sh
+
+[[ -f ~/.config/X11/Xresources ]] && xrdb -merge ~/.config/X11/Xresources
+xset r rate 300 50
+setxkbmap fr
+pgrep -x sxhkd > /dev/null || sxhkd &
+launch_statusbar &
+setbg &
+pgrep -x mpd > /dev/null || mpd &
+
+exec bspwm

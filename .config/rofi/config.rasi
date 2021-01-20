@@ -1,0 +1,13 @@
+/*-*- mode: css; -*-*/
+
+configuration {
+  show-icons:         true;
+  icon-theme:         "Paper";
+  cycle:              true;
+  hide-scrollbar:     true;
+  disable-history:    false;
+  click-to-exit:      true;
+  modi:               "drun,run";
+  display-drun:       "";
+  columns:            1;
+}
