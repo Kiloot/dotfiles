@@ -1,6 +1,7 @@
 [color]
 
-background = #2e3440
-foreground = #D8DEE9
-foreground-alt = #4c566a
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+fadeColor = ${xrdb:fadeColor}
+color14 = ${xrdb:color14}
 

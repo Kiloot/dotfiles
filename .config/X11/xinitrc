@@ -4,8 +4,8 @@
 xset r rate 300 50
 setxkbmap fr
 pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x mpd > /dev/null || mpd &
 launch_statusbar &
 setbg &
-pgrep -x mpd > /dev/null || mpd &
 
 exec bspwm

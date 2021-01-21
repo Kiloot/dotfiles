@@ -86,17 +86,18 @@ element-icon {
     text-color:       inherit;
 }
 window {
-    font:             "Roboto Regular 11";
+    font:             "Roboto Mono Nerd Font Complete Mono 11";
     location:         northwest;
     width:            20%;
-    y-offset:         24;
+    y-offset:         20;
     padding:          0;
     background-color: var(background);
     border:           0;
 }
 mainbox {
     padding: 0;
-    border:  0;
+    border:  2;
+    border-color: var(separatorcolor);
 }
 message {
     padding:      10px ;

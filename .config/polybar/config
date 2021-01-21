@@ -1,5 +1,4 @@
 [global/wm]
-wm-restack = bspwm
 
 include-file = $XDG_CONFIG_HOME/polybar/colors
 include-file = $XDG_CONFIG_HOME/polybar/modules
@@ -8,25 +7,27 @@ include-file = $XDG_CONFIG_HOME/polybar/modules
 bottom = false
 fixed-center = true
 width = 100%
-height = 20
+height = 23
 offset-x = 0%
 offset-y = 0%
 background = ${color.background}
 foreground = ${color.foreground}
 radius-top = 0.0
 radius-bottom = 0.0
-border-size = 2
-border-color = ${color.background}
+border-bottom-size = 1
+border-bottom-color = ${color.fadeColor}
 ; Number of spaces to add at the beginning/end of the bar
-padding = 0
+padding = 1
 ; Number of spaces to add before/after each module
 module-margin-left = 1
 module-margin-right = 1
 font-0 = "Iosevka Nerd Font:pixelsize=12;3"
 
-modules-left = menu bspwm 
-modules-center = mpd
-modules-right = alsa network date powermenu
+modules-left =  menu bspwm
+modules-center = mpd 
+modules-right = alsa battery network date powermenu
+
+wm-restack = bspwm
 
 ; Enable support for inter-process messaging
 ; See the Messaging wiki page for more details.
