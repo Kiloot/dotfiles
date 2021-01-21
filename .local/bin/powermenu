@@ -1,0 +1,11 @@
+#!/bin/sh
+
+MENU="$(echo "  Logout|  Reboot|  Shutdown" | \
+rofi -no-lazy-grab -sep "|" -dmenu -i -p "" \
+-theme $XDG_CONFIG_HOME/rofi/themes/powermenu.rasi)"
+
+case "$MENU" in
+  *Logout) bspc quit ;;
+  *Reboot) systemctl reboot ;;
+  *Shutdown) systemctl -i poweroff
+esac

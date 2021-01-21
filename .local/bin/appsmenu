@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rofi -show drun -no-lazy-grab -theme $XDG_CONFIG_HOME/rofi/themes/appsmenu.rasi
