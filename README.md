@@ -1,6 +1,6 @@
 # Nord lovers
 This is my personal collection of configuration files.
-The [setup section](#install these dotfiles and all dependencies) will guide you through the installation process.
+The [setup section](#install-these-dotfiles-and-all-dependencies) will guide you through the installation process.
 
 Here are some details about my setup:
 * **Distro**: Arch linux
