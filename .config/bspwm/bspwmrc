@@ -13,8 +13,8 @@ bspc config focused_border_color "#8fbcbb"
 bspc config normal_border_color "#4c566a"
 bspc config active_border_color "#4c566a"
 
-bspc rule -a firefox state=tiled follow=on focus=on
-bspc rule -a Emacs state=tiled follow=on focus=on
+# bspc rule -a firefox state=tiled follow=on focus=on
+bspc rule -a Emacs state=tiled
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
 # bspc rule -a mplayer2 state=floating

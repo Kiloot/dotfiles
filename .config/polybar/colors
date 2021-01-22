@@ -3,5 +3,31 @@
 background = ${xrdb:background}
 foreground = ${xrdb:foreground}
 fadeColor = ${xrdb:fadeColor}
-color14 = ${xrdb:color14}
+
+blackDark = ${xrdb:color0}
+blackLight = ${xrdb:color8}
+
+redDark = ${xrdb:color1}
+redLight = ${xrdb:color9}
+
+orangeDark = #d08770
+orangeLight = #d08770
+
+greenDark = ${xrdb:color2}
+greenLight = ${xrdb:color10}
+
+yellowDark = ${xrdb:color3}
+yellowLight = ${xrdb:color11}
+
+blueDark = ${xrdb:color4}
+blueLight = ${xrdb:color12}
+
+magentaDark = ${xrdb:color5}
+magentaLight = ${xrdb:color13}
+
+cyanDark = ${xrdb:color6}
+cyanLight = ${xrdb:color14}
+
+whiteDark = ${xrdb:color7}
+whiteLight = ${xrdb:color15}
 

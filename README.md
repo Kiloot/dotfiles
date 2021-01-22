@@ -14,7 +14,8 @@ Here are some details about my setup:
 * **Image Viewer**: feh
 * **General key binder**: [sxhkd](https://github.com/baskerville/sxhkd)
 * **Music**: [mpd/mpc](https://www.musicpd.org/)
-* **Theme**: [Nord](https://www.nordtheme.com/)
+* **Fonts**: Iosevka [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+* **Color Scheme**: [Nord](https://www.nordtheme.com/)
 
 ## Usage
 These dotfiles are intended to follow the unix philosophy *"Do One Thing
@@ -26,7 +27,7 @@ And Do It Well"*.
 * Useful scripts are in `~/.local/bin/`
 
 ## Install these dotfiles and all dependencies
-Clone the repo files directly to your home directory and install the dependancies:
+Clone the repo files directly to your home directory and install the dependencies:
 
 ```
 yay -S bspwm emacs fehg kitty mpd mpc polybar rofi sxhkd

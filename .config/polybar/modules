@@ -1,19 +1,19 @@
 [module/powermenu]
 type = custom/text
-content = 襤
+content = 
 content-padding = 1
 content-font = 1
 content-background = ${color.background}
-content-foreground = ${color.foreground}
+content-foreground = ${color.cyanLight}
 click-left = powermenu
 
 [module/menu]
 type = custom/text
-content = 
+content = 
 content-padding = 1
 content-font = 1
 content-background = ${color.background}
-content-foreground = ${color.foreground}
+content-foreground = ${color.cyanLight}
 click-left = appsmenu
 
 [module/battery]
@@ -48,8 +48,9 @@ time-format = %H:%M
 ;   <bar-capacity>
 ;   <ramp-capacity>
 ;   <animation-charging>
-format-charging = <animation-charging> <label-charging>
+format-charging = <ramp-capacity> <label-charging>
 format-charging-background = ${color.background}
+format-charging-foreground = ${color.yellowLight}
 format-charging-padding = 0
 
 ; Available tags:
@@ -59,7 +60,7 @@ format-charging-padding = 0
 ;   <animation-discharging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-background = ${color.background}
-format-discharging-foreground = #88c0d0
+format-discharging-foreground = ${color.yellowLight}
 format-discharging-padding = 0
 
 ; Available tags:
@@ -67,9 +68,9 @@ format-discharging-padding = 0
 ;   <bar-capacity>
 ;   <ramp-capacity>
 format-full = <label-full>
-format-full-prefix = 
+format-full-prefix = 
 format-full-background = ${color.background}
-format-full-foreground = #a3be8c
+format-full-foreground = ${color.greenLight}
 format-full-padding = 0
 
 ; Available tokens:
@@ -89,40 +90,12 @@ label-discharging = %percentage%%
 label-full = " Full"
 
 ; Only applies if <ramp-capacity> is used
-ramp-capacity-0 = 
-ramp-capacity-0-foreground = #bf616a
-ramp-capacity-1 = 
-ramp-capacity-1-foreground = #bf616a
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-5 = 
-ramp-capacity-6 = 
-ramp-capacity-7 = 
-ramp-capacity-8 = 
-ramp-capacity-9 = 
-
-; Only applies if <bar-capacity> is used
-;bar-capacity-width = 10
-
-; Only applies if <animation-charging> is used
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-5 = 
-animation-charging-6 = 
-
-; Framerate in milliseconds
-animation-charging-framerate = 750
-
-; Only applies if <animation-discharging> is used
-;;animation-discharging-0 = ${battery.anim0}
-;;animation-discharging-1 = ${battery.anim1}
-
-; Framerate in milliseconds
-;animation-discharging-framerate = 500
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${color.redLight}
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 [module/alsa]
 type = internal/alsa
@@ -130,21 +103,23 @@ type = internal/alsa
 interval = 5
 ; Available tags: <label-volume> (default) <ramp-volume> <bar-volume>
 format-volume = <ramp-volume> <label-volume>
+format-volume-foreground = ${color.cyanDark}
 ; Available tags: <label-muted> (default) <ramp-volume> <bar-volume>
 format-muted-prefix = 婢
+format-muted-foreground = ${color.cyanDark}
 ; Available tokens: %percentage% (default)
 label-volume = %percentage%%
+label-volume-foreground = ${color.cyanDark}
 ; Available tokens: %percentage% (default)
 label-muted = " Muted"
-label-muted-foreground = ${color.fadeColor}
+label-muted-foreground = ${color.blackLight}
 ; Only applies if <ramp-volume> is used
-ramp-volume-0 = 奄
-ramp-volume-1 = 奄
-ramp-volume-2 = 奔
-ramp-volume-3 = 奔
-ramp-volume-4 = 墳
-ramp-volume-5 = 墳
-ramp-volume-6 = 墳
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
 
 [module/date]
 type = internal/date
@@ -152,10 +127,11 @@ timezone = Europe/Paris
 ; Seconds to sleep between updates
 interval = 30
 ; Optional time format
-time = " %H:%M"
+time = " %H:%M"
 time-alt = " %a, %d %b %Y"
 ; Available tokens: %date% (Default) %time%
 label = %time%
+label-foreground = ${color.greenLight}
 
 [module/mpd]
 type = internal/mpd
@@ -168,38 +144,49 @@ port = 6600
 ; Seconds to sleep between progressbar/song timer sync
 interval = 1
 format-online = <label-song> <icon-prev> <toggle> <icon-next>
-format-online-prefix = 
+format-online-prefix = 
+format-online-foreground = ${color.blueLight}
 format-offline = <label-offline>
+format-offline-foreground = ${color.blueLight}
 format-offline-prefix = 
 label-song =  " %artist% - %title%"
-label-song-maxlen = 30
+label-song-foreground = ${color.blueLight}
+label-song-maxlen = 10
 label-song-ellipsis = true
 label-offline = " Offline"
 ; Only applies if <icon-X> is used
-icon-play = 奈
-icon-pause = 
-icon-stop = ﭦ
-icon-next = "ﭡ  "
-icon-prev = ﭣ
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-next = " "
+icon-prev = 
+icon-play-foreground = ${color.blueLight}
+icon-pause-foreground = ${color.blueLight}
+icon-stop-foreground = ${color.blueLight}
+icon-next-foreground = ${color.blueLight}
+icon-prev-foreground = ${color.blueLight}
 
 [module/network]
 type = internal/network
 interface = wlp1s0
-format-connected = <ramp-signal>
-ramp-signal-0 = 直 
-format-disconnected = 睊
+format-connected = <ramp-signal> <label-connected>
+label-connected = " %essid%"
+ramp-signal-0 =  
+format-connected-foreground = ${color.magentaLight}
+format-disconnected = 
+format-disconnected-foreground = ${color.redLight}
 
 [module/bspwm]
 type = internal/bspwm
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-label-focused = 
-label-focused-foreground = ${color.color14}
+label-focused = 
+label-focused-foreground = ${color.cyanDark}
 label-focused-padding = 1
-label-occupied = 
-label-occupied-foreground = ${color.fadeColor}
+label-occupied = 
+label-occupied-foreground = ${color.cyanDark}
 label-occupied-padding = 1
-label-empty = 
-label-empty-foreground = ${color.foreground} 
+label-empty = 
+label-empty-foreground = ${color.blackLight} 
 label-empty-padding = 1

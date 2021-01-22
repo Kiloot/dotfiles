@@ -138,3 +138,6 @@ XF86MonBrightnessDown
 	
 XF86MonBrightnessUp
 	xbacklight -inc 5
+
+Print
+	scrot $XDG_PICTURES_DIR/screenshot/%Y-%m-%d-%T-screenshot.png
