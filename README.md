@@ -11,7 +11,7 @@ Here are some details about my setup:
 * **Terminal**: [Kitty](https://github.com/kovidgoyal/kitty/)
 * **Shell**: bash
 * **Editor**: [Emacs](https://www.gnu.org/software/emacs/)
-* **File Manage**: Dired Emacs mode
+* **File Manager**: Dired Emacs mode
 * **Browser**: Firefox
 * **Launcher**: [Rofi](https://github.com/davatorium/rofi/)
 * **Status bar**: [Polybar](https://github.com/polybar/polybar)

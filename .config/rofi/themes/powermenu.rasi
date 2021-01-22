@@ -86,9 +86,9 @@ element-icon {
     text-color:       inherit;
 }
 window {
-    font:             "Roboto Mono Nerd Font Complete Mono 11";
+    font:             "RobotoMono Nerd Font 11";
     location:         northeast;
-    width:            10%;
+    width:            12%;
     y-offset:         20;
     padding:          0;
     background-color: var(background);
