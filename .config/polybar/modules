@@ -4,7 +4,7 @@ content = 
 content-padding = 1
 content-font = 1
 content-background = ${color.background}
-content-foreground = ${color.cyanLight}
+content-foreground = ${color.blueDark}
 click-left = powermenu
 
 [module/menu]
@@ -13,7 +13,7 @@ content = 
 content-padding = 1
 content-font = 1
 content-background = ${color.background}
-content-foreground = ${color.cyanLight}
+content-foreground = ${color.blueDark}
 click-left = appsmenu
 
 [module/battery]
@@ -50,7 +50,7 @@ time-format = %H:%M
 ;   <animation-charging>
 format-charging = <ramp-capacity> <label-charging>
 format-charging-background = ${color.background}
-format-charging-foreground = ${color.yellowLight}
+format-charging-foreground = ${color.foreground}
 format-charging-padding = 0
 
 ; Available tags:
@@ -60,7 +60,7 @@ format-charging-padding = 0
 ;   <animation-discharging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-background = ${color.background}
-format-discharging-foreground = ${color.yellowLight}
+format-discharging-foreground = ${color.foreground}
 format-discharging-padding = 0
 
 ; Available tags:
@@ -70,7 +70,7 @@ format-discharging-padding = 0
 format-full = <label-full>
 format-full-prefix = 
 format-full-background = ${color.background}
-format-full-foreground = ${color.greenLight}
+format-full-foreground = ${color.foreground}
 format-full-padding = 0
 
 ; Available tokens:
@@ -103,13 +103,13 @@ type = internal/alsa
 interval = 5
 ; Available tags: <label-volume> (default) <ramp-volume> <bar-volume>
 format-volume = <ramp-volume> <label-volume>
-format-volume-foreground = ${color.cyanDark}
+format-volume-foreground = ${color.foreground}
 ; Available tags: <label-muted> (default) <ramp-volume> <bar-volume>
 format-muted-prefix = 婢
-format-muted-foreground = ${color.cyanDark}
+format-muted-foreground = ${color.foreground}
 ; Available tokens: %percentage% (default)
 label-volume = %percentage%%
-label-volume-foreground = ${color.cyanDark}
+label-volume-foreground = ${color.foreground}
 ; Available tokens: %percentage% (default)
 label-muted = " Muted"
 label-muted-foreground = ${color.blackLight}
@@ -131,7 +131,7 @@ time = " %H:%M"
 time-alt = " %a, %d %b %Y"
 ; Available tokens: %date% (Default) %time%
 label = %time%
-label-foreground = ${color.greenLight}
+label-foreground = ${color.foreground}
 
 [module/mpd]
 type = internal/mpd
@@ -145,12 +145,12 @@ port = 6600
 interval = 1
 format-online = <label-song> <icon-prev> <toggle> <icon-next>
 format-online-prefix = 
-format-online-foreground = ${color.blueLight}
+format-online-foreground = ${color.foreground}
 format-offline = <label-offline>
 format-offline-foreground = ${color.blueLight}
 format-offline-prefix = 
 label-song =  " %artist% - %title%"
-label-song-foreground = ${color.blueLight}
+label-song-foreground = ${color.foreground}
 label-song-maxlen = 10
 label-song-ellipsis = true
 label-offline = " Offline"
@@ -160,19 +160,19 @@ icon-pause = 
 icon-stop = 
 icon-next = " "
 icon-prev = 
-icon-play-foreground = ${color.blueLight}
-icon-pause-foreground = ${color.blueLight}
-icon-stop-foreground = ${color.blueLight}
-icon-next-foreground = ${color.blueLight}
-icon-prev-foreground = ${color.blueLight}
+icon-play-foreground = ${color.foreground}
+icon-pause-foreground = ${color.foreground}
+icon-stop-foreground = ${color.foreground}
+icon-next-foreground = ${color.foreground}
+icon-prev-foreground = ${color.foreground}
 
 [module/network]
 type = internal/network
 interface = wlp1s0
-format-connected = <ramp-signal> <label-connected>
-label-connected = " %essid%"
+format-connected = <ramp-signal> 
+; label-connected = "%essid%"
 ramp-signal-0 =  
-format-connected-foreground = ${color.magentaLight}
+format-connected-foreground = ${color.foreground}
 format-disconnected = 
 format-disconnected-foreground = ${color.redLight}
 
@@ -182,10 +182,10 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 label-focused = 
-label-focused-foreground = ${color.cyanDark}
+label-focused-foreground = ${color.foreground}
 label-focused-padding = 1
-label-occupied = 
-label-occupied-foreground = ${color.cyanDark}
+label-occupied = 
+label-occupied-foreground = ${color.blueLight}
 label-occupied-padding = 1
 label-empty = 
 label-empty-foreground = ${color.blackLight} 
