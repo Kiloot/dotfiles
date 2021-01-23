@@ -3,7 +3,7 @@ This is my personal collection of configuration files.
 The [setup section](#install-these-dotfiles-and-all-dependencies) will
 guide you through the installation process.
 
-![Screenshot](Pictures/screenshot/2021-01-22-17:10:41-screenshot.png)
+![Screenshot](2021-01-23-15:11:28-screenshot.png)
 
 Here are some details about my setup:
 * **Distro**: Arch linux
