@@ -8,7 +8,7 @@ guide you through the installation process.
 Here are some details about my setup:
 * **Distro**: Arch linux
 * **WM**: [Bspwm](https://github.com/baskerville/bspwm)
-* **Terminal**: [Kitty](https://github.com/kovidgoyal/kitty/)
+* **Terminal**: [Alacritty](https://github.com/alacritty/alacritty)
 * **Shell**: bash
 * **Editor**: [Emacs](https://www.gnu.org/software/emacs/)
 * **File Manager**: Dired Emacs mode
@@ -19,7 +19,6 @@ Here are some details about my setup:
 * **General key binder**: [sxhkd](https://github.com/baskerville/sxhkd)
 * **Music**: [mpd/mpc](https://www.musicpd.org/)
 * **Compositor**: Jonaburg's fork of Picom
-* **Fonts**: Iosevka [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
 * **Color Scheme**: [Nord](https://www.nordtheme.com/)
 * **Fonts**: Roboto Mono Nerd Font for general text and Font Awesome 5
   free Solid for icons
@@ -37,5 +36,5 @@ And Do It Well"*.
 Clone the repo files directly to your home directory and install the dependencies:
 
 ```
-yay -S bspwm emacs fehg kitty mpd mpc polybar rofi sxhkd
+yay -S bspwm emacs fehg alacritty mpd mpc polybar rofi sxhkd
 ```
