@@ -18,7 +18,8 @@ Here are some details about my setup:
 * **Image Viewer**: feh
 * **General key binder**: [sxhkd](https://github.com/baskerville/sxhkd)
 * **Music**: [mpd/mpc](https://www.musicpd.org/)
-* **Compositor**: Jonaburg's fork of Picom
+* **Music Player**: Spotify with slightly modified [Dribblish](https://github.com/morpheusthewhite/spicetify-themes/tree/master/Dribbblish) theme
+* **Compositor**: Jonaburg's fork of [Picom](https://github.com/jonaburg/picom)
 * **Color Scheme**: [Nord](https://www.nordtheme.com/)
 * **Fonts**: Roboto Mono Nerd Font for general text and Font Awesome 5
   free Solid for icons
