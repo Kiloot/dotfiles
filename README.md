@@ -3,7 +3,7 @@ This is my personal collection of configuration files.
 The [setup section](#install-these-dotfiles-and-all-dependencies) will
 guide you through the installation process.
 
-![Screenshot](Pictures/screenshot/2021-01-23-15:11:28-screenshot.png)
+![Screenshot](Pictures/screenshot/2021-01-25-18:34:58-screenshot.png)
 
 Here are some details about my setup:
 * **Distro**: Arch linux
@@ -23,18 +23,9 @@ Here are some details about my setup:
 * **Fonts**: Roboto Mono Nerd Font for general text and Font Awesome 5
   free Solid for icons
 
-## Usage
-These dotfiles are intended to follow the unix philosophy *"Do One Thing
-And Do It Well"*.
-
-* I try to minimize what's directly in `~/`. I follow the XDG base
-  directory standard:
-	* All configs that can be in `~/.config/` are.
-* Useful scripts are in `~/.local/bin/`
-
 ## Install these dotfiles and all dependencies
 Clone the repo files directly to your home directory and install the dependencies:
 
 ```
-yay -S bspwm emacs fehg alacritty mpd mpc polybar rofi sxhkd
+yay -S alacritty bspwm emacs fehg mpd mpc picom-jonaburg-git polybar rofi sxhkd
 ```

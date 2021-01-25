@@ -1,6 +1,6 @@
 #! /bin/bash
 
-bspc monitor -d I II III IV V VI
+bspc monitor -d I II III IV V
 
 bspc config border_width         2
 bspc config window_gap          12
