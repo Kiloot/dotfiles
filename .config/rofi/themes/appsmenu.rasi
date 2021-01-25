@@ -89,7 +89,8 @@ window {
     font:             "RobotoMono Nerd Font 10";
     location:         northwest;
     width:            20%;
-    y-offset:         24;
+    y-offset:         37;
+    x-offset:         10;
     padding:          0;
     background-color: var(background);
     border:           0;
