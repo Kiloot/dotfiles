@@ -13,7 +13,7 @@
 #define nord11 #BF616A
 #define nord12 #D08770
 #define nord13 #EBCB8B
-#define nord14 #A3BE8C
+#define nord14 #A3BE8c
 #define nord15 #B48EAD
 
 *.foreground:   nord4
