@@ -145,3 +145,6 @@ XF86MonBrightnessUp
 
 Print
 	scrot $XDG_PICTURES_DIR/screenshot/%Y-%m-%d-%T-screenshot.png
+
+Menu
+	powermenu

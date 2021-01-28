@@ -19,6 +19,7 @@
 *.foreground:   nord4
 *.background:   nord0
 *.cursorColor:  nord4
+Xcursor.theme: volantes_light_cursors
 *fading: 35
 *fadeColor: nord3
 

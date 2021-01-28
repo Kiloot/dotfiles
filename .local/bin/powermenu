@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MENU="$(echo "  Logout|  Reboot|  Shutdown" | \
+MENU="$(echo "  Logout|  Reboot|  Shutdown" | \
 rofi -no-lazy-grab -sep "|" -dmenu -i -p "" \
 -theme $XDG_CONFIG_HOME/rofi/themes/powermenu.rasi)"
 
