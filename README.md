@@ -12,13 +12,13 @@ Here are some details about my setup:
 * **Shell**: bash
 * **Editor**: [Emacs](https://www.gnu.org/software/emacs/)
 * **File Manager**: Dired Emacs mode
-* **Browser**: Firefox
+* **Browser**: Firefox with [Minimal Functional Fox](https://github.com/mut-ex/minimal-functional-fox) & [startpage](https://github.com/deepjyoti30/startpage)
 * **Launcher**: [Rofi](https://github.com/davatorium/rofi/)
 * **Status bar**: [Polybar](https://github.com/polybar/polybar)
 * **Image Viewer**: feh
 * **General key binder**: [sxhkd](https://github.com/baskerville/sxhkd)
 * **Music**: [mpd/mpc](https://www.musicpd.org/)
-* **Music Player**: Spotify with slightly modified [Dribblish](https://github.com/morpheusthewhite/spicetify-themes/tree/master/Dribbblish) theme
+* **Music Player**: Spotify with [Dribblish](https://github.com/morpheusthewhite/spicetify-themes/tree/master/Dribbblish) theme
 * **Compositor**: Jonaburg's fork of [Picom](https://github.com/jonaburg/picom)
 * **Color Scheme**: [Nord](https://www.nordtheme.com/)
 * **Fonts**: Roboto Mono Nerd Font for general text and Font Awesome 5
@@ -28,5 +28,6 @@ Here are some details about my setup:
 Clone the repo files directly to your home directory and install the dependencies:
 
 ```
-yay -S alacritty bspwm emacs fehg mpd mpc picom-jonaburg-git polybar rofi sxhkd
+yay -S alacritty bspwm emacs fehg mpd mpc picom-jonaburg-git polybar
+rofi spicetify-cli spotify sxhkd
 ```
