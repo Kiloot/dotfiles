@@ -28,61 +28,185 @@
 
 * Selection candidates and search methods Selections
 ** Completion frameworks and extras
-*** Flx
+*** Selectrum
 #+BEGIN_SRC emacs-lisp
-(use-package flx
-  :ensure t)
+  (use-package selectrum
+    :ensure t
+    :init (selectrum-mode)
+    :config (setq selectrum-highlight-candidates-function #'orderless-highlight-matches))
 #+END_SRC
 
-*** Ivy/Counsel
+*** Orderless
 #+BEGIN_SRC emacs-lisp
-  (use-package ivy
+  (use-package orderless
     :ensure t
+    :custom (completion-styles '(orderless))
     :config
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq enable-recursive-minibuffers t)
-    (setq ivy-re-builders-alist
-	'((t . ivy--regex-fuzzy)))
-    :bind
-    (("C-c v" . ivy-push-view)
-      ("C-c V" . ivy-pop-view)
-      ("C-c C-r" . ivy-resume)))
-
-  (use-package counsel
-    :ensure t
-    :bind 
-    (("M-x" . counsel-M-x)
-     ("C-x C-f" . counsel-find-file)
-     ("C-x b" . counsel-switch-buffer)
-     ("M-y" . counsel-yank-pop)
-     ("<f1> f" . counsel-describe-function)
-     ("<f1> v" . counsel-describe-variable) 
-     ("<f1> l" . counsel-find-library)      
-     ("<f2> i" . counsel-info-lookup-symbol)
-     ("<f2> u" . counsel-unicode-char)      
-     ("<f2> j" . counsel-set-variable)
-     ("C-c c" . counsel-compile)
-     ("C-c g" . counsel-git)
-     ("C-c j" . counsel-git-grep)
-     ("C-c L" . counsel-git-log)
-     ("C-c k" . counsel-rg)
-     ("C-c m" . counsel-linux-app)
-     ("C-c n" . counsel-fzf)
-     ("C-c i" . counsel-imenu)
-     ("C-x l" . counsel-locate)
-     ("C-c J" . counsel-file-jump)
-     ("C-S-o" . counsel-rhythmbox)
-     ("C-c w" . counsel-wmctrl)
-     ("C-c b" . counsel-bookmark)
-     ("C-c d" . counsel-descbinds)
-     ("C-c g" . counsel-git)
-     ("C-c o" . counsel-outline)
-     ("C-c t" . counsel-load-theme)
-     ("C-c F" . counsel-org-file)))
-
-  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+    (setq orderless-skip-highlighting (lambda () selectrum-is-active)))
 #+END_SRC
+
+*** Prescient
+#+BEGIN_SRC emacs-lisp
+(use-package selectrum-prescient
+  :ensure t
+  :after (selectrum)
+  :config  (setq selectrum-prescient-enable-filtering nil)
+  :init
+  (selectrum-prescient-mode +1)
+  (prescient-persist-mode +1))
+#+END_SRC
+
+*** Consult
+#+BEGIN_SRC emacs-lisp
+(use-package consult
+  :ensure t
+  ;; Replace bindings. Lazily loaded due by `use-package'.
+  :bind (;; C-c bindings (mode-specific-map)
+         ("C-c h" . consult-history)
+         ("C-c m" . consult-mode-command)
+         ("C-c b" . consult-bookmark)
+         ("C-c k" . consult-kmacro)
+	 ("C-c t" . consult-theme)
+         ;; C-x bindings (ctl-x-map)
+         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complet-command
+         ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+         ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ;; Custom M-# bindings for fast register access
+         ("M-#" . consult-register-load)
+         ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+         ("C-M-#" . consult-register)
+         ;; Other custom bindings
+         ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+         ("<help> a" . consult-apropos)            ;; orig. apropos-command
+         ;; M-g bindings (goto-map)
+         ("M-g e" . consult-compile-error)
+         ("M-g g" . consult-goto-line)             ;; orig. goto-line
+         ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+         ("M-g o" . consult-outline)
+         ("M-g m" . consult-mark)
+         ("M-g k" . consult-global-mark)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-project-imenu)
+         ;; M-s bindings (search-map)
+         ("M-s f" . consult-find)
+         ("M-s L" . consult-locate)
+         ("M-s g" . consult-grep)
+         ("M-s G" . consult-git-grep)
+         ("M-s r" . consult-ripgrep)
+         ("M-s l" . consult-line)
+         ("M-s m" . consult-multi-occur)
+         ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)
+         ;; Isearch integration
+         ("M-s e" . consult-isearch)
+         :map isearch-mode-map
+         ("M-e" . consult-isearch)                 ;; orig. isearch-edit-string
+         ("M-s e" . consult-isearch)               ;; orig. isearch-edit-string
+         ("M-s l" . consult-line))                 ;; required by consult-line to detect isearch
+
+  ;; The :init configuration is always executed (Not lazy)
+  :init
+
+  ;; Optionally configure the register formatting. This improves the register
+  ;; preview for `consult-register', `consult-register-load',
+  ;; `consult-register-store' and the Emacs built-ins.
+  (setq register-preview-delay 0
+        register-preview-function #'consult-register-format)
+
+  ;; Optionally tweak the register preview window.
+  ;; This adds thin lines, sorting and hides the mode line of the window.
+  (advice-add #'register-preview :override #'consult-register-window)
+
+  ;; Use Consult to select xref locations with preview
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
+
+  ;; Configure other variables and modes in the :config section,
+  ;; after lazily loading the package.
+  :config
+
+  ;; Optionally configure preview. Note that the preview-key can also be
+  ;; configured on a per-command basis via `consult-config'. The default value
+  ;; is 'any, such that any key triggers the preview.
+  ;; (setq consult-preview-key 'any)
+  ;; (setq consult-preview-key (kbd "M-p"))
+  ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
+
+  ;; Optionally configure the narrowing key.
+  ;; Both < and C-+ work reasonably well.
+  (setq consult-narrow-key "<") ;; (kbd "C-+")
+
+  ;; Optionally make narrowing help available in the minibuffer.
+  ;; Probably not needed if you are using which-key.
+  ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+
+  ;; Optionally configure a function which returns the project root directory.
+  ;; There are multiple reasonable alternatives to chose from:
+  ;; * projectile-project-root
+  ;; * vc-root-dir
+  ;; * project-roots
+  ;; * locate-dominating-file
+  (autoload 'projectile-project-root "projectile")
+  (setq consult-project-root-function #'projectile-project-root)
+  ;; (setq consult-project-root-function
+  ;;       (lambda ()
+  ;;         (when-let (project (project-current))
+  ;;           (car (project-roots project)))))
+  ;; (setq consult-project-root-function #'vc-root-dir)
+  ;; (setq consult-project-root-function
+  ;;       (lambda () (locate-dominating-file "." ".git")))
+)
+#+END_SRC
+
+*** Marginalia
+#+BEGIN_SRC emacs-lisp
+(use-package marginalia
+  :ensure t
+  :config
+  (marginalia-mode))
+#+END_SRC
+
+*** Embark
+#+begin_src emacs-lisp
+(use-package which-key
+  :ensure t
+  :init (which-key-mode))
+
+(use-package embark
+  :ensure t
+  :bind
+  (("C-s-a" . embark-act)       ;; pick some comfortable binding
+   ("C-h b" . embark-bindings)) ;; alternative for `describe-bindings'
+
+  :init
+  ;; optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
+
+  :config
+  ;; hide the mode line of the embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*embark collect \\(live\\|completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none))))
+  
+  (setq embark-action-indicator
+      (lambda (map _target)
+        (which-key--show-keymap "Embark" map nil nil 'no-paging)
+        #'which-key--hide-popup-ignore-command)
+      embark-become-indicator embark-action-indicator))
+
+;; consult users will also want the embark-consult package.
+(use-package embark-consult
+  :ensure t
+  :after (embark consult)
+  :demand t ; only necessary if you have the hook below
+  ;; if you want to have consult previews as you move around an
+  ;; auto-updating embark collect buffer
+  :hook
+  (embark-collect-mode . embark-consult-preview-minor-mode))
+
+#+end_src
 
 *** Projects completion
 #+BEGIN_SRC emacs-lisp
@@ -123,36 +247,18 @@
 
   (projectile-register-project-type 'vhdl '("identity.xml" "bench" "defs" "deps" "pr" "simu" "src")
                                   ;; :project-file "identity.xml"
-                                  :compile "make -f Makefile all"
-                                  :src-dir "src/"
-                                  :test ""
-                                  :test-dir "bench/src/"
-                                  :test-suffix "_tb"
-				  :test-prefix "tb_")
+				    :compilation-dir "simu/"
+                                    :compile "./simulate.sh"
+                                    :src-dir "hdl/"
+                                    :test ""
+                                    :test-dir "tb/"
+                                    :test-suffix "_tb"
+				    :test-prefix "tb_")
 
   :bind-keymap ("C-c p" . projectile-command-map)
   :bind (:map projectile-command-map
 	      ("R" . projectile-regenerate-tags)))
 #+END_SRC
-
-** Configurations for—or extensions to—built-in search commands
-*** iedit, edit multiple regions in the same way simultaneously
-
-#+BEGIN_SRC emacs-lisp
-(use-package iedit
-  :ensure t
-  :bind (("C-;" . iedit-mode )))
-
-(global-set-key (kbd "M-n") 'isearch-forward-symbol-at-point)
-#+END_SRC
-
-*** Tags
-
-#+BEGIN_SRC emacs-lisp
-(use-package etags
-  :config
-  (setq tags-add-tables nil))
-#+END_SRC 
 
 * Directory, buffer, window management
 ** Dired (directory file editor, file manager)
@@ -228,7 +334,7 @@
   :ensure t
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  :bind (("M-o" . ace-window)))
+  :bind (("C-x o" . ace-window)))
 #+END_SRC 
 
 * Version Control
@@ -304,10 +410,10 @@
 
 ** Themes
 #+BEGIN_SRC emacs-lisp
-(use-package nord-theme
+(use-package doom-themes
   :ensure t
   :config
-  (load-theme 'nord t))
+  (load-theme 'doom-nord t))
 #+END_SRC   
 
 ** Language settings for prose and code
@@ -552,11 +658,11 @@ begin  -- process <label>
    end if;
 end process <label>;" "e" "")
 	("Synchronous Process" "-- purpose: <cursor>
-<label> : process (<clock>) is
+<label> : process (<clock>, <reset>) is
 begin
-   if <clock>.nrst = '0' then
+   if <reset> = '0' then
 
-   elsif rising_edge(<clock>.clk) then
+   elsif rising_edge(<clock>) then
 
    end if;
 end process <label>;" "ps" "")
@@ -572,10 +678,10 @@ end process <label>;" "pc" ""))))
 	("type" "\\<t_\\w+\\>" "ForestGreen" "PaleGreen" nil)
 	("variable" "\\<v_\\w+\\>" "Grey50" "Grey80" nil))))
 
-(setq vhdl-actual-generic-name (quote ("\\([gG]_\\)\\(.*\\)" . "C_\\2")))
-(setq vhdl-actual-port-name (quote ("\\([iIoO]_\\)\\(.*\\)" . "w_\\2")))
+(setq vhdl-actual-generic-name (quote (".*" . "\\&")))
+(setq vhdl-actual-port-name (quote (".*" . "\\&")))
 (setq vhdl-array-index-record-field-in-sensitivity-list nil)
-(setq vhdl-basic-offset 3)
+(setq vhdl-basic-offset 4)
 (setq vhdl-clock-edge-condition (quote function))
 (setq vhdl-clock-name "clk")
 (setq vhdl-company-name "XXX")
@@ -608,16 +714,16 @@ end process <label>;" "pc" ""))))
 (setq vhdl-file-name-case (quote downcase))
 (setq vhdl-highlight-special-words nil)
 (setq vhdl-highlight-translate-off t)
-(setq vhdl-instance-name (quote (".*" . "inst_\\&_%d")))
-(setq vhdl-package-file-name (quote (".*" . "\\&")))
-(setq vhdl-reset-name "nrst")
+(setq vhdl-instance-name (quote (".*" . "i_\\&_%d")))
+(setq vhdl-package-file-name (quote (".*" . "\\&_pkg")))
+(setq vhdl-reset-name "rstn")
 (setq vhdl-sensitivity-list-all t)
 (setq vhdl-stutter-mode t)
-(setq vhdl-testbench-entity-name (quote (".*" . "tb_\\&")))
+(setq vhdl-testbench-entity-name (quote (".*" . "\\&_tb")))
 (setq vhdl-testbench-include-configuration nil)
 (setq vhdl-underscore-is-part-of-word nil)
-(setq vhdl-upper-case-constants nil)
-(setq vhdl-upper-case-enum-values nil)
+(setq vhdl-upper-case-constants t)
+(setq vhdl-upper-case-enum-values t)
 (setq vhdl-use-components-package t)
 (setq vhdl-word-completion-case-sensitive t)
 (setq vhdl-beautify-options (quote (t t t t t)))
@@ -819,3 +925,34 @@ end process <label>;" "pc" ""))))
 (global-set-key (kbd "C-x à") 'delete-window) ;C-x 0
 
 #+END_SRC
+
+** clojure cookbook
+
+#+begin_src emacs-lisp
+(defun increment-clojure-cookbook ()
+  "When reading the Clojure cookbook, find the next section, and
+close the buffer. If the next section is a sub-directory or in
+the next chapter, open Dired so you can find it manually."
+  (interactive)
+  (let* ((cur (buffer-name))
+	 (split-cur (split-string cur "[-_]"))
+	 (chap (car split-cur))
+	 (rec (car (cdr split-cur)))
+	 (rec-num (string-to-number rec))
+	 (next-rec-num (1+ rec-num))
+	 (next-rec-s (number-to-string next-rec-num))
+	 (next-rec (if (< next-rec-num 10)
+		       (concat "0" next-rec-s)
+		     next-rec-s))
+	 (target (file-name-completion (concat chap "-" next-rec) "")))
+    (progn 
+      (if (equal target nil)
+	  (dired (file-name-directory (buffer-file-name)))
+	(find-file target))
+      (kill-buffer cur))))
+
+;; (define-key adoc-mode-map (kbd "M-+") 'increment-clojure-cookbook)
+
+(add-hook 'adoc-mode-hook 'cider-mode)
+(add-to-list 'auto-mode-alist '("\\.asciidoc\\'" . adoc-mode))
+#+end_src

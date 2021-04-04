@@ -14,7 +14,7 @@ background = ${color.background}
 foreground = ${color.foreground}
 radius-top = 0.0
 radius-bottom = 0.0
-border-bottom-size = 2
+border-bottom-size = 1
 border-bottom-color = ${color.fadeColor}
 ; Number of spaces to add at the beginning/end of the bar
 padding = 1
@@ -23,6 +23,7 @@ module-margin-left = 1
 module-margin-right = 1
 font-0 = "Font Awesome 5 Free Solid:style=Solid:pixelsize=11;3"
 font-1 = "RobotoMono Nerd Font:style=Medium:pixelsize=11;3"
+font-2 = "icomoon:pixelsize=11;3"
 
 modules-left =  menu bspwm
 modules-center = 

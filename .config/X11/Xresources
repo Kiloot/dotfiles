@@ -16,10 +16,11 @@
 #define nord14 #A3BE8c
 #define nord15 #B48EAD
 
+Xcursor.theme: volantes_light_cursors
+Xcursor.size: 16
 *.foreground:   nord4
 *.background:   nord0
 *.cursorColor:  nord4
-Xcursor.theme: volantes_light_cursors
 *fading: 35
 *fadeColor: nord3
 

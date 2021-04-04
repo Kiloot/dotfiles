@@ -3,7 +3,7 @@
 # Default programs
 export EDITOR="emacs"
 export PAGER="less"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 
 # XDG Dirs
