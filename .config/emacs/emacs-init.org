@@ -219,11 +219,11 @@
 	   (format " [%s]" (projectile-project-name))))
   (setq projectile-globally-ignored-directories
 	(quote
-	 (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "pr" "simu" "deps")))
+	 (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work")))
   (setq projectile-current-project-on-switch (quote move-to-end))
   (setq projectile-sort-order (quote recentf))
   (setq projectile-tags-backend (quote auto))
-  (setq projectile-completion-system 'ivy)
+  (setq projectile-completion-system 'default)
 
   (defun projectile-regenerate-tags ()
     "Regenerate the project's [e|g]tags."
@@ -245,7 +245,7 @@
 	(visit-tags-table tags-file)
 	(message "Regenerated %s" tags-file))))
 
-  (projectile-register-project-type 'vhdl '("identity.xml" "bench" "defs" "deps" "pr" "simu" "src")
+  (projectile-register-project-type 'vhdl '("identity.xml" "hdl" "simu" "tb")
                                   ;; :project-file "identity.xml"
 				    :compilation-dir "simu/"
                                     :compile "./simulate.sh"
@@ -951,7 +951,7 @@ the next chapter, open Dired so you can find it manually."
 	(find-file target))
       (kill-buffer cur))))
 
-;; (define-key adoc-mode-map (kbd "M-+") 'increment-clojure-cookbook)
+(define-key adoc-mode-map (kbd "M-+") 'increment-clojure-cookbook)
 
 (add-hook 'adoc-mode-hook 'cider-mode)
 (add-to-list 'auto-mode-alist '("\\.asciidoc\\'" . adoc-mode))
